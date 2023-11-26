@@ -10,12 +10,17 @@ class AlienInvasion:
         """Initialize the game, and create game resources."""
         pygame.init()  # Initialize the background settings.
 
-        self.screen = pygame.display.set_mode((1200, 800))
+        # Create a display window to draw the game's graphical elements.
+        self.screen = pygame.display.set_mode((1200, 800))  # 1200 wide by 800 long
+        # The attribute called screen is called a surface.
         pygame.display.set_caption("Alien Invasion")
 
     def run_game(self):
         """Start the main loop for the game."""
-        while True:
+        while True:  # This infinite while loop is controlled by an event loop.
+            # This loop contains code to manage events and manage screen updates.
+            # An event is an action the user performs while playing the game.
+
             # Watch for keyboard and mouse events.
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
