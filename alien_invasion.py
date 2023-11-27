@@ -3,6 +3,8 @@ import sys  # Contains tools that allow us to exit the game when the player
 
 import pygame
 
+from settings import Settings
+
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
 
@@ -10,9 +12,11 @@ class AlienInvasion:
         """Initialize the game, and create game resources."""
         pygame.init()  # Initialize the background settings.
         self.clock = pygame.time.Clock()
+        self.settings = Settings()
 
         # Create a display window to draw the game's graphical elements.
-        self.screen = pygame.display.set_mode((1200, 800))  # 1200 wide by 800 long
+        self.screen = pygame.display.set_mode(
+            self.settings.screen_width, self.settings.screen_height)
         # The attribute called screen is called a surface.
         pygame.display.set_caption("Alien Invasion")
 
@@ -31,7 +35,7 @@ class AlienInvasion:
                     sys.exit()
 
             # Redraw the screen during each pass through the loop.
-            self.screen.fill(self.bg_color)
+            self.screen.fill(self.settings.bg_color)
 
             # Make the most recently drawn screen visible.
             pygame.display.flip()
