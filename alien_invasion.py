@@ -16,7 +16,7 @@ class AlienInvasion:
 
         # Create a display window to draw the game's graphical elements.
         self.screen = pygame.display.set_mode(
-            self.settings.screen_width, self.settings.screen_height)
+            (self.settings.screen_width, self.settings.screen_height))
         # The attribute called screen is called a surface.
         pygame.display.set_caption("Alien Invasion")
 
