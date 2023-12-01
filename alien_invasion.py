@@ -35,10 +35,7 @@ class AlienInvasion:
             # This loop contains code to manage events and manage screen updates.
             # An event is an action the user performs while playing the game.
 
-            # Watch for keyboard and mouse events.
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
+            self._check_events()
 
             # Redraw the screen during each pass through the loop.
             self.screen.fill(self.settings.bg_color)
@@ -48,6 +45,12 @@ class AlienInvasion:
             pygame.display.flip()
             # Make the clock tick.
             self.clock.tick(60)  # This is a frame rate of 60 times per second.
+
+    def _check_events(self):
+        """Respond to keypresses and mouse events."""
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
