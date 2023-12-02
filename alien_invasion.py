@@ -5,6 +5,7 @@ import pygame
 
 from settings import Settings
 from ship import Ship
+from snail import Snail
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -25,6 +26,9 @@ class AlienInvasion:
         # Call to Ship() requires one argument.
         # self argument here refers to the current instance of AlienInvasion.
         self.ship = Ship(self)
+
+        # Draw a snail
+        self.snail = Snail(self)
 
         # Set the background color.
         self.bg_color = self.settings.bg_color
@@ -49,6 +53,7 @@ class AlienInvasion:
         """Update images on the screen, and flip to the new screen."""
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        self.snail.blitme()
 
         pygame.display.flip()
 
