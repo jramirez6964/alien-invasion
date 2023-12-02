@@ -24,7 +24,7 @@ class AlienInvasion:
         # Draw a ship right after the game window has been created.
         # Call to Ship() requires one argument.
         # self argument here refers to the current instance of AlienInvasion.
-        self.ship = Ship(self)  
+        self.ship = Ship(self)
 
         # Set the background color.
         self.bg_color = self.settings.bg_color
