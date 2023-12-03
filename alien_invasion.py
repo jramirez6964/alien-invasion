@@ -36,6 +36,7 @@ class AlienInvasion:
             # An event is an action the user performs while playing the game.
 
             self._check_events()
+            self.ship.update()
             self._update_screen()
             self.clock.tick(60)  # This is a frame rate of 60 times per second.
 
@@ -46,8 +47,10 @@ class AlienInvasion:
                     sys.exit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RIGHT:
-                        # Move the ship to the right.
-                        self.ship.rect.x += 1
+                        self.ship.moving_right = True
+                elif event.type == pygame.KEYUP:
+                    if event.key == pygame.K_RIGHT:
+                        self.ship.moving_right = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
