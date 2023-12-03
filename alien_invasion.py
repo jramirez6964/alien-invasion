@@ -73,7 +73,7 @@ class AlienInvasion:
         elif event.key == pygame.K_UP:
             self.ship.moving_up = False
         elif event.key == pygame.K_DOWN:
-            self.ship.moving_down == False
+            self.ship.moving_down = False
 
     def _update_screen(self):
         """Update images on the screen, and flip to the new screen."""
