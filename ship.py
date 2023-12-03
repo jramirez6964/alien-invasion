@@ -18,8 +18,8 @@ class Ship:
         # Access the picture's rect to assign it to the Ship.
         self.rect = self.image.get_rect()
 
-        # Start each new ship at the bottom center of the screen.
-        self.rect.midbottom = self.screen_rect.midbottom
+        # Start each new ship at the very center of the screen.
+        self.rect.center = self.screen_rect.center
 
         # Store a float for the ship's exact horizontal position.
         self.x = float(self.rect.x)
