@@ -10,3 +10,17 @@ the player loses three ships, the game ends.
 For the first development phase, we'll make a ship that can move right and left 
 when the player presses the arrow keys and fire bullets when the player presses 
 the spacebar.
+
+Reviewing the project in Chapter 13: Aliens!
+We want to:
+* Add a single alien to the top-left corner of the screen, with
+  appropriate spacing around it.
+* Fill the upper portion of the screen with as many aliens as we can fit
+  horizontally. Then we'll create additional rows of aliens until we have a full
+  fleet.
+* Make the fleet move sideways and down until the entire fleet is shot down, an
+  alien hits the ship, or an alien touches the ground. If the entire fleet is
+  shot down, we'll create a new fleet. If an alien hits the ship or the ground,
+  we'll destroy the ship and create a new fleet.
+* Limit the number of ships the player can use, and end the game when the player
+  has used up the allotted number of ships.
