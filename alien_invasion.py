@@ -7,6 +7,7 @@ from settings import Settings
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from star import Star
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -28,7 +29,9 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
+        self.stars = pygame.sprite.Group()
 
+        self._create_star_grid()
         self._create_fleet()
 
         # Set the background color.
@@ -90,6 +93,32 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
 
+    def _create_star_grid(self):
+        """Create the grid of stars."""
+        # Make a star and keep adding stars until there's no room left.
+        # Spacing between stars shall be two star widths and two star heights.
+        star = Star(self)
+        star_width, star_height = star.rect.size
+
+        current_x, current_y = star_width, star_height
+        while current_y < (self.settings.screen_height - 3 * star_height):
+            while current_x < (self.settings.screen_width - 2 * star_width):
+                self._create_star(current_x, current_y)
+                current_x += 3 * star_width
+
+            # Finished a row; reset x value, and increment y value
+            current_x = star_width
+            current_y += 2 * star_height
+
+    def _create_star(self, x_position, y_position):
+        """Create a star and place it in the grid."""
+        new_star = Star(self)
+        new_star.rect.x = x_position
+        new_star.rect.y = y_position
+        self.stars.add(new_star)
+    
+
+
     def _create_fleet(self):
         """Create the fleet of aliens."""
         # Make an alien and keep adding aliens until there's no room left.
@@ -121,6 +150,7 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.ship.blitme()
+        self.stars.draw(self.screen)
         self.aliens.draw(self.screen)
 
         pygame.display.flip()
