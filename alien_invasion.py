@@ -8,6 +8,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from star import Star
+from random import randint
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -100,10 +101,11 @@ class AlienInvasion:
         star = Star(self)
         star_width, star_height = star.rect.size
 
-        current_x, current_y = star_width, star_height
+        current_x, current_y = star_width * 2, star_height * 2
         while current_y < (self.settings.screen_height - 3 * star_height):
             while current_x < (self.settings.screen_width - 2 * star_width):
-                self._create_star(current_x, current_y)
+                self._create_star(current_x + randint(-50, 50), 
+                                  current_y + randint(-50, 50))
                 current_x += 3 * star_width
 
             # Finished a row; reset x value, and increment y value
